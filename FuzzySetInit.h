@@ -28,24 +28,24 @@ void FuzzySetInit(){
     // inisialisasi fuzzy set variabel untuk nilai output 2
     // pompa pH turun
     FuzzyOutput *set_PPD = new FuzzyOutput(2);
-  set_PPD->addFuzzySet(ppdlama);
-  set_PPD->addFuzzySet(ppdsedang);
-  set_PPD->addFuzzySet(ppdlama);
-  fuzzy_main_obj->addFuzzyOutput(set_PPD);
+    set_PPD->addFuzzySet(ppdlama);
+    set_PPD->addFuzzySet(ppdsedang);
+    set_PPD->addFuzzySet(ppdlama);
+    fuzzy_main_obj->addFuzzyOutput(set_PPD);
 
-  // inisialisasi fuzzy set variabel untuk nilai output 3
-    // pompa Nutrisi
-FuzzyOutput *set_PPN = new FuzzyOutput(3);
-  set_PPN->addFuzzySet(ppnlama);
-  set_PPN->addFuzzySet(ppnsedang);
-  set_PPN->addFuzzySet(ppnlama);
-  fuzzy_main_obj->addFuzzyOutput(set_PPN);
+    // inisialisasi fuzzy set variabel untuk nilai output 3
+      // pompa Nutrisi
+    FuzzyOutput *set_PPN = new FuzzyOutput(3);
+    set_PPN->addFuzzySet(ppnlama);
+    set_PPN->addFuzzySet(ppnsedang);
+    set_PPN->addFuzzySet(ppnlama);
+    fuzzy_main_obj->addFuzzyOutput(set_PPN);
 
-// inisialisasi fuzzy set variabel untuk nilai output 4
+    // inisialisasi fuzzy set variabel untuk nilai output 4
     // pompa air baku
-FuzzyOutput *set_PAB = new FuzzyOutput(4);
-  set_PAB->addFuzzySet(pablama);
-  set_PAB->addFuzzySet(pabsedang);
-  set_PAB->addFuzzySet(pablama);
-  fuzzy_main_obj->addFuzzyOutput(set_PAB);
+    FuzzyOutput *set_PAB = new FuzzyOutput(4);
+    set_PAB->addFuzzySet(pablama);
+    set_PAB->addFuzzySet(pabsedang);
+    set_PAB->addFuzzySet(pablama);
+    fuzzy_main_obj->addFuzzyOutput(set_PAB);
 }
