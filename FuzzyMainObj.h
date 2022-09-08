@@ -1,4 +1,5 @@
-#include <Fuzzy.h>
+void fuzzy_main_obj(){
+    #include <Fuzzy.h>
 #include <FuzzyComposition.h>
 #include <FuzzyIO.h>
 #include <FuzzyInput.h>
@@ -44,3 +45,4 @@ FuzzySet *pablama = new FuzzySet(20, 30, 30, 30);
 FuzzySet *ppnmati = new FuzzySet(0, 0, 0, 10);
 FuzzySet *ppnsedang = new FuzzySet(7.5, 15, 15, 22.5);
 FuzzySet *ppnlama = new FuzzySet(20, 30, 30, 30);
+}
