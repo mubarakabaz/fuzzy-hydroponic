@@ -37,8 +37,12 @@ float phSetA, phSetB, tdsSetA, tdsSetB;
 void(* resetFunc)(void)=0;
 
 // memanggil file fungsi fuzzy yang telah dideklarasikan
+// -- kelas yang memetakan nilai member fuzzy
 #include "FuzzyMainObj.h"
 fuzzy_main_obj();
+
+// -- kelas yang 
+#include ""
 
 void setup() {
   // put your setup code here, to run once:
