@@ -1,4 +1,10 @@
 void fuzzy_main_obj(){
+    /*
+    * Library fuzzy menggunakan proses
+    * (MAX-MIN) dan (Minimum Mamdani) untuk inferensi, 
+    * Komposisi, dan (Centers of Area) untuk defuzzifikasi
+    */
+   
     #include <Fuzzy.h>
     #include <FuzzyComposition.h>
     #include <FuzzyIO.h>
