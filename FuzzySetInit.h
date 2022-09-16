@@ -1,4 +1,9 @@
 void FuzzySetInit(){
+
+    /*
+    * inisialisasi semua inputan menjadi crisp input
+    */
+
     // inisialisasi Fuzzy Set variabel pH
     FuzzyInput *set_PH = new FuzzyInput(1);
     set_PH->addFuzzySet(asamkuat);
