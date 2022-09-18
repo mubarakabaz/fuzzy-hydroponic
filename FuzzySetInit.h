@@ -1,4 +1,4 @@
-void FuzzySetInit(){
+void fuzzySetInit(){
 
     /*
     * inisialisasi semua inputan menjadi crisp input

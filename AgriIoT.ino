@@ -1,8 +1,5 @@
 #include "Deklarasi.h"
 
-// inisialisasi tombol reset pada alat
-void(* resetFunc)(void)=0;
-
 // memanggil file fungsi fuzzy yang telah dideklarasikan
 // -- kelas yang memetakan nilai member fuzzy
 #include "FuzzyMainObj.h"
@@ -12,20 +9,59 @@ fuzzy_main_obj();
 #include "FuzzySetInit.h"
 #include "FuzzyRuleInit.h"
 
+// -- memanggil kelas setup
+#include "SetupSensor.h"
+#include "SetupRelay.h"
+
 void setup() {
   Serial.begin(115200); // Komunikasi Serial untuk Debugging
 
-  // inisialisasi pin sensor PH meter
-  pinMode(PH_PIN, INPUT);
+  setupSensor(); // inisialisasi sensor
+  setupRelay(); // inisialisasi relay
 
-  // Inisialisasi sensor Suhu
-  DS18B20.begin();
+  // Setting LCD jika pertama kali dihidupkan
+  lcd.begin();
+  lcd.setCursor(0,0);
+  lcd.print("Selamat Datang");
+  lcd.setCursor(0,1);
+  lcd.print("Di Sistem Cerdas");
+  lcd.setCursor(0,2);
+  lcd.print("Connecting...");
 
-  // inisialisasi pin Sensor TDS Meter
-  gravityTds.setPin(TDS_PIN);
-  gravityTds.setAref(5.0); // nilai referensi tegangan, default arduino 5V
-  gravityTds.begin(); // inisialisasi sensor TDS
+  // inisialisasi WiFi (Set SSID & Password WiFi)
 
+  // Setting lcd jika berhasil terhubung ke WiFi
+  lcd.clear();
+  lcd.setCursor(0,1);
+  lcd.print("Berhasil");
+  lcd.setCursor(0,2);
+  lcd.print("Terhubung!");
+  
+  delay(1000);
+  
+  lcd.clear();
+
+  lcd.setCursor(0,0);
+  lcd.print("Selamat Datang");
+  lcd.setCursor(0,1);
+  lcd.print("mubarakabaz.my.id");
+
+  delay(1000);
+
+  lcd.clear();
+
+  // Memulai proses Fuzzifikasi
+  // panggil kelas FuzzySetInit & FuzzyRuleInit
+  fuzzySetInit();
+  fuzzyRuleInit();
+
+  // EEPROM | Menampilkan data yang ditampung
+  phSetA = EEPROM.read(201);
+  phSetB = EEPROM.read(202);
+  tdsSetA = EEPROM.read(203);
+  tdsSetB = EEPROM.read(204);
+  tdsSetA = tdsSetA * 10;
+  tdsSetB = tdsSetB * 10;
 
 }
 

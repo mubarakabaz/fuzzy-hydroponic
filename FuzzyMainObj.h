@@ -1,4 +1,4 @@
-void fuzzy_main_obj(){
+
     /*
     * Library fuzzy menggunakan proses
     * (MAX-MIN) dan (Minimum Mamdani) untuk inferensi, 
@@ -15,7 +15,7 @@ void fuzzy_main_obj(){
     #include <FuzzyRuleConsequent.h>
     #include <FuzzySet.h>
 
-    // inisialisasi nama kelas fuzzy
+    // inisialisasi nama kelas fwuzzy
     Fuzzy *fuzzy_main_obj = new Fuzzy();
 
     // inisialisasi nilai member  fuzzy input pH
@@ -51,4 +51,3 @@ void fuzzy_main_obj(){
     FuzzySet *ppnmati = new FuzzySet(0, 0, 0, 10);
     FuzzySet *ppnsedang = new FuzzySet(7.5, 15, 15, 22.5);
     FuzzySet *ppnlama = new FuzzySet(20, 30, 30, 30);
-}

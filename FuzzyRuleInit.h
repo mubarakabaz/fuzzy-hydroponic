@@ -1,4 +1,4 @@
-void FuzzyRuleInit(){
+void fuzzyRuleInit(){
     // Membuat FuzzyRule //////////////////////// 01
     FuzzyRuleAntecedent *AK_SK = new FuzzyRuleAntecedent();
     AK_SK->joinWithAND(asamkuat, sangatkurang);
