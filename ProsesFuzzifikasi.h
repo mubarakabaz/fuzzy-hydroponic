@@ -1,4 +1,4 @@
-void ProsesFuzzifikasi(){
+void prosesFuzzy(){
     // memetakan nilai input yang akan di fuzzifikasikan
     fuzzy_main_obj->setInput(1, phValue);
     fuzzy_main_obj->setInput(2, tdsValue);

@@ -8,6 +8,10 @@ fuzzy_main_obj();
 // -- memanggil kelass yang dibutuhkan untuk fungsi fuzzy
 #include "FuzzySetInit.h"
 #include "FuzzyRuleInit.h"
+#include "ProsesFuzzifikasi.h"
+#include "ProsesDefuzzifikasi.h"
+#include "cekAkurasiPH.h"
+#include "cekAkurasiTDS.h"
 
 // -- memanggil kelas setup
 #include "SetupSensor.h"
@@ -66,6 +70,46 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // Pembacaan sensor Suhu
+  DS18B20.requestTemperatures();
+  temperature = DS18B20.getTempByIndex(0);
 
+  // Pembacaan sensor pH
+  int ph = analogRead(PH_PIN);
+  float voltage = 5 / 1024.0 * ph;
+  // kalibrasi sensor ph (menggunakan regresi linear)
+  // -5.4 -> nilai minimum pembacaan sensor 
+  phValue = (-5.400 * voltage) + 18.14;
+
+  // Pembacaan sensor TDS
+  gravityTds.setAdcRange(1024); 
+  gravityTds.setTemperature(temperature);
+  gravityTds.update();
+  tdsValue = gravityTds.getTdsValue();
+
+  // proses fuzzifikasi
+  prosesFuzzy();
+
+  // cek nilai fuzzifikasi
+  cekAkurasiPh();
+  cekAkurasiTds();
+
+  // proses Defuzzifikasi
+  prosesDefuzzy();
+ 
+  
+  // Logika pompa
+
+  
+
+  // Print Debugging untuk mengecek nilai input
+  // setiap 5 detik
+  if(millis() - waktuMulai > 5000U){
+    waktuMulai = millis();
+
+    Serial.println("=====+ copy & paste nilai ke matlab (ph | tds) +=====");
+    Serial.print(phValue); Serial.print(" "); Serial.print("tdsValue");
+    Serial.println(" ");
+    
+  }
 }

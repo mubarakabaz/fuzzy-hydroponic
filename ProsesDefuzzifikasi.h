@@ -1,4 +1,4 @@
-void ProsesDefuzzifikasi(){
+void prosesDefuzzy(){
     // proses defuzzifikasi pada nilai output
     float ppu = fuzzy_main_obj->defuzzify(1);
     float ppd = fuzzy_main_obj->defuzzify(2);
