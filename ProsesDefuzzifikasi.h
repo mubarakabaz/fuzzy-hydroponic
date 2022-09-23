@@ -6,9 +6,9 @@ void prosesDefuzzy(){
     float pab = fuzzy_main_obj->defuzzify(4);
 
     // bulatkan nilai output yang dihasilkan
-    int waktu_ppu = round(ppu);
-    int waktu_ppd = round(ppd);
-    int waktu_pna = round(pna);
-    int waktu_pab = round(pab);
+    int pb_ppu = round(ppu);
+    int pb_ppd = round(ppd);
+    int pb_pna = round(pna);
+    int pb_pab = round(pab);
 
 }

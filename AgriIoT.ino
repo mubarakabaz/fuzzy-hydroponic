@@ -16,6 +16,7 @@ fuzzy_main_obj();
 // -- memanggil kelas setup
 #include "SetupSensor.h"
 #include "SetupRelay.h"
+#include "SetupWiFi.h"
 
 void setup() {
   Serial.begin(115200); // Komunikasi Serial untuk Debugging
@@ -87,17 +88,6 @@ void loop() {
   gravityTds.update();
   tdsValue = gravityTds.getTdsValue();
 
-  // proses fuzzifikasi
-  prosesFuzzy();
-
-  // cek nilai fuzzifikasi
-  cekAkurasiPh();
-  cekAkurasiTds();
-
-  // proses Defuzzifikasi
-  prosesDefuzzy();
- 
-  
   // Logika pompa
 
   
@@ -107,9 +97,37 @@ void loop() {
   if(millis() - waktuMulai > 5000U){
     waktuMulai = millis();
 
+    // proses fuzzifikasi
+    prosesFuzzy();
+
+    // cek nilai fuzzifikasi
+    cekAkurasiPh();
+    cekAkurasiTds();
+
+    // proses Defuzzifikasi
+    prosesDefuzzy();
+
     Serial.println("=====+ copy & paste nilai ke matlab (ph | tds) +=====");
     Serial.print(phValue); Serial.print(" "); Serial.print("tdsValue");
     Serial.println(" ");
     
+    // tampilkan di LCD
+    lcd.setCursor(0, 0);
+    lcd.print("PH: "); lcd.print(phValue, 1); lcd.print(" ");
+    lcd.setCursor(8, 0);
+    lcd.print("TDS: "); lcd.print(tdsValue, 1); lcd.print(" ");
+    lcd.setCursor(0, 1);
+    lcd.print("Suhu: "); lcd.print(temperature, 1); lcd.print(" ");
+    lcd.setCursor(10, 1);
+    lcd.print(phSetA, 1); lcd.print("<>"); lcd.print(phSetB, 1);
+    lcd.setCursor(0, 2);
+    // ingat untuk mengubah nilai PU, PD, NA, AB
+    lcd.print("PU "); lcd.print(spu); lcd.print(" "); lcd.print("PD "); lcd.print(spd); lcd.print(" ");
+    lcd.setCursor(11, 2);
+    lcd.print(tdsSetA,1); lcd.print("<>"); lcd.print(tdsSetB,1);
+    lcd.setCursor(0, 3);
+    lcd.print("NA "); lcd.print(sna); lcd.print("AB "); lcd.print(sab);
+    lcd.setCursor(18, 3);
+    lcd.print("AAM");
   }
 }
