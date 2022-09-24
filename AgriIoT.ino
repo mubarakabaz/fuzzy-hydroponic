@@ -89,7 +89,7 @@ void loop() {
   tdsValue = gravityTds.getTdsValue();
 
   // Logika pompa
-
+  if(phValue <= phSetA)
   
 
   // Print Debugging untuk mengecek nilai input

@@ -27,14 +27,18 @@ int temperature;
 #define pompaAirBaku 11
 
 float pab, pna, ppu, ppd;
-int wppu, wppd, wpna, wpab;
+int spu, spd, sna, sab;
 
 // inisialisasi variabel untuk menampung nilai setpoint
 // yang diterima dari server.
-float phSetA, phSetB, tdsSetA, tdsSetB;
+// float phSetA, phSetB, tdsSetA, tdsSetB;
+float phSetA = 5.5;
+float phSetB = 6.5;
+float tdsSetA = 950;
+float tdsSetB = 1050;
 
 // library ArduinoJSON
-#include <ArduinoJson.h>
+// #include <ArduinoJson.h>
 
 // tombol untuk reset
 void (* resetFunc) (void) = 0;
